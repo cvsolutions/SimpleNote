@@ -1,0 +1,16 @@
+{
+    "name": "cvsolutions/simplenote",
+    "description": "Il modo più semplice per mantenere le note",
+    "minimum-stability": "stable",
+    "authors": [
+        {
+            "name": "Concetto Vecchio",
+            "email": "info@cvsolutions.it"
+        }
+    ],
+    "require": {
+        "silex/silex": "dev-master",
+        "smarty/smarty": "dev-trunk",
+        "gabordemooij/redbean": "dev-master"
+    }
+}
