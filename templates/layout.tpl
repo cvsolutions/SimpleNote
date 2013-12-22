@@ -27,11 +27,9 @@
                         <input type="text" ng-model="search.$" class="form-control">
 
                         <div class="input-group-btn">
-                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Action <span class="caret"></span></button>
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Menu <span class="caret"></span></button>
                             <ul class="dropdown-menu pull-right">
-                                <li><a href="/">Aggiungi Nuovo</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#">Separated link</a></li>
+                                <li><a href="/">Aggiungi nota</a></li>
                             </ul>
                         </div>
                     </div>
@@ -48,9 +46,10 @@
                 <div class="col-lg-12">
                     {literal}
                         <div class="list-group">
-                            <a href="#" class="list-group-item active">{{(notes|filter:search).length}} simple note</a>
+                            <a href="#" class="list-group-item active">al momento ci sono {{(notes|filter:search).length}} note</a>
+
                             <div class="scroll">
-                            <a ng-repeat="row in notes | filter:search" href="/edit/{{row.id}}" class="list-group-item">{{row.fullname}}</a>
+                                <a ng-repeat="row in notes | filter:search" href="/edit/{{row.id}}" class="list-group-item">{{row.fullname}}</a>
                             </div>
                         </div>
                     {/literal}

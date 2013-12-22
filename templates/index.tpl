@@ -2,7 +2,7 @@
 
 {block name="panel"}
     <div class="panel panel-default">
-        <div class="panel-heading">The simplest way to keep notes</div>
+        <div class="panel-heading">Benvenuto in Simple Note</div>
         <div class="panel-body">
             <form class="" action="/process" method="post" role="form">
 
@@ -17,7 +17,7 @@
                 </div>
 
                 <input type="hidden" name="id" value="0">
-                <input type="submit" class="btn btn-danger" value="Aggiungi">
+                <input type="submit" class="btn btn-warning" value="Aggiungi">
 
             </form>
         </div>

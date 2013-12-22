@@ -4,18 +4,29 @@ require_once __DIR__ . '/vendor/autoload.php';
 use RedBean_Facade as ORM;
 use Symfony\Component\HttpFoundation\Request;
 
+/** @var Application $app */
 $app          = new Silex\Application();
 $app['debug'] = true;
 
+/** @var Template Engine $tpl */
 $tpl = new Smarty();
 
+/** Database connect */
 ORM::setup('sqlite:data/simplenote.sqlite');
 
-$app->get('/', function () use ($app, $tpl) {
+
+/**
+ * Home
+ * Add new note
+ */
+$app->get('/', function () use ($tpl) {
     $tpl->display('index.tpl');
     return false;
 });
 
+/**
+ * Load JSON notes
+ */
 $app->post('/load.json', function () use ($app) {
     $notes = ORM::findAll('notes', 'ORDER BY publication DESC');
     // print_r($notes);
@@ -29,6 +40,9 @@ $app->post('/load.json', function () use ($app) {
     return $app->json($obj);
 });
 
+/**
+ * Edit note
+ */
 $app->get('/edit/{id}', function ($id) use ($tpl) {
     $notes = ORM::load('notes', $id);
     $tpl->assign('row', $notes);
@@ -36,6 +50,9 @@ $app->get('/edit/{id}', function ($id) use ($tpl) {
     return false;
 });
 
+/**
+ * Action form note
+ */
 $app->post('/process', function (Request $request) use ($app, $tpl) {
 
     $id          = (int)$request->get('id');
@@ -66,6 +83,9 @@ $app->post('/process', function (Request $request) use ($app, $tpl) {
     }
 });
 
+/**
+ * Delete note
+ */
 $app->get('/delete/{id}', function ($id) use ($app) {
     $notes = ORM::load('notes', $id);
     ORM::trash($notes);
