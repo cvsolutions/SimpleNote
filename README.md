@@ -10,7 +10,3 @@ Using Composer (recommended) [composer](http://getcomposer.org "composer - packa
 ```sh
 php composer.phar install
 ```
-If you have installed composer:
-```sh
-composer install
-```
